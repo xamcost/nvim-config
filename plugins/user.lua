@@ -18,6 +18,7 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
+    lazy = false,
     -- run = "cd app && npm install",
     run = function() vim.fn["mkdp#util#install"]() end,
   },
@@ -25,9 +26,9 @@ return {
     "kylechui/nvim-surround",
     lazy = false,
     config = function()
-      require("nvim-surround").setup({
+      require("nvim-surround").setup {
         -- Configuration here, or leave empty to use defaults
-      })
+      }
     end,
   },
 }
