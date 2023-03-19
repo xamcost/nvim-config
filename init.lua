@@ -18,7 +18,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  colorscheme = "nord",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -42,7 +42,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- "sumneko_lua",
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 3200, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
