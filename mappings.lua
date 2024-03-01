@@ -17,6 +17,9 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    -- Base64
+    -- ["<leader>6e"] = { "<cmd>Base64Encode<cr>", desc = "Base64 encode" },
+    -- ["<leader>6d"] = { "<cmd>Base64Decode<cr>", desc = "Base64 decode" },
   },
   t = {
     -- setting a mapping to false will disable it
