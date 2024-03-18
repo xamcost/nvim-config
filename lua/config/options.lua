@@ -24,8 +24,8 @@ opt.relativenumber = true -- Relative line numbers
 
 -- Indentation
 opt.expandtab = true -- Use spaces instead of tabs
-opt.shiftwidth = 2 -- Size of an indent
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.shiftwidth = 2   -- Size of an indent
+opt.tabstop = 2      -- Number of spaces tabs count for
 
 -- Improve search
 opt.ignorecase = true
@@ -36,5 +36,5 @@ opt.hlsearch = false
 opt.undofile = true
 opt.undolevels = 10000
 
--- True color support
--- opt.termguicolors = true
+-- Open vertical windows on the right
+opt.splitright = true
