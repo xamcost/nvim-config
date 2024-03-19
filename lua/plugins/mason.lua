@@ -2,7 +2,7 @@ return {
   "williamboman/mason.nvim",
   lazy = true,
   cmd = { "Mason", "MasonInstall" },
-  keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+  -- keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",

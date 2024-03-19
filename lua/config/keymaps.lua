@@ -37,21 +37,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    map('n', 'gD', vim.lsp.buf.declaration, opts)
-    map('n', 'gd', vim.lsp.buf.definition, opts)
-    map('n', 'K', vim.lsp.buf.hover, opts)
-    map('n', 'gi', vim.lsp.buf.implementation, opts)
-    map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-    map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    map('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Go to declaration" })
+    map('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition" })
+    map('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf, desc = "Help" })
+    map('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf, desc = "Go to implementation" })
+    map('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Signature help" })
+    map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "Add workspace folder" })
+    map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf, desc = "Remove workspace folder" })
     map('n', '<leader>wl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    map('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-    map('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-    map('n', 'gr', vim.lsp.buf.references, opts)
+    end, { buffer = ev.buf, desc = "List workspace folders" })
+    map('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
+    map('n', '<leader>lr', vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename all references" })
+    map({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
+    map('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
     -- map('n', '<leader>lf', function()
     --   vim.lsp.buf.format { async = true }
     -- end, opts)
