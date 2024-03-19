@@ -17,36 +17,62 @@ return {
   opts = {
     -- Define your formatters
     formatters_by_ft = {
-      astro = { { "prettier", "prettierd" } },
+      -- astro = { { "prettier", "prettierd" } },
       lua = { "stylua" },
       python = { "isort", "black" },
       -- java = { "google-java-format" },
-      javascript = { { "prettierd", "prettier" } },
-      javascriptreact = { "prettier" },
-      typescript = { "prettier" },
-      typescriptreact = { "prettier" },
-      json = { { "prettierd", "prettier" } },
+      javascript = { "prettierd" },
+      javascriptreact = { { "prettierd" } },
+      typescript = { "prettierd" },
+      typescriptreact = { "prettierd" },
+      json = { { "prettierd" } },
       -- yaml = { "yamlfix" },
     },
     -- Set up format-on-save
-    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    format_on_save = function(bufnr)
+      -- Disable with a global or buffer-local variable
+      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
+      return { timeout_ms = 500, lsp_fallback = true }
+    end,
     -- Customize formatters
     formatters = {
-      shfmt = {
-        prepend_args = { "-i", "2" },
+      -- shfmt = {
+      --   prepend_args = { "-i", "2" },
+      -- },
+      prettierd = {
+        args = { "--no-semi", "--stdin-filepath", "$FILENAME" }
       },
-      prettier = {
-        args = function(ctx)
-          if vim.endswith(ctx.filename, ".astro") then
-            return { "--stdin-filepath", "$FILENAME", "--parser", "html" }
-          end
-          return { "--stdin-filepath", "$FILENAME" }
-        end,
-      },
+      -- prettier = {
+      --   args = function(ctx)
+      --     if vim.endswith(ctx.filename, ".astro") then
+      --       return { "--stdin-filepath", "$FILENAME", "--parser", "html" }
+      --     end
+      --     return { "--stdin-filepath", "$FILENAME" }
+      --   end,
+      -- },
     },
   },
   init = function()
     -- If you want the formatexpr, here is the place to set it
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+    vim.api.nvim_create_user_command("FormatDisable", function(args)
+      if args.bang then
+        -- FormatDisable! will disable formatting just for this buffer
+        vim.b.disable_autoformat = true
+      else
+        vim.g.disable_autoformat = true
+      end
+    end, {
+      desc = "Disable autoformat-on-save",
+      bang = true,
+    })
+    vim.api.nvim_create_user_command("FormatEnable", function()
+      vim.b.disable_autoformat = false
+    end, {
+      desc = "Re-enable autoformat-on-save",
+    })
   end,
 }
