@@ -32,23 +32,44 @@ return {
     branch = "canary",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     opts = {
-      debug = true,          -- Enable debugging
+      debug = true, -- Enable debugging
       window = {
-        layout = 'vertical', -- 'vertical', 'horizontal', 'float'
+        layout = "vertical", -- 'vertical', 'horizontal', 'float'
       },
       -- default mappings
       mappings = {
-        close = 'q',
-        reset = '<C-r>',
-        complete = '<Tab>',
-        submit_prompt = '<CR>',
-        accept_diff = '<C-y>',
-        show_diff = 'gd',
-        show_system_prompt = 'gp',
-        show_user_selection = 'gs',
+        complete = {
+          detail = "Use @<Tab> or /<Tab> for options.",
+          insert = "<Tab>",
+        },
+        close = {
+          normal = "q",
+          insert = "<C-c>",
+        },
+        reset = {
+          normal = "<C-l>",
+          insert = "<C-l>",
+        },
+        submit_prompt = {
+          normal = "<CR>",
+          insert = "<C-m>",
+        },
+        accept_diff = {
+          normal = "<C-y>",
+          insert = "<C-y>",
+        },
+        show_diff = {
+          normal = "gd",
+        },
+        show_system_prompt = {
+          normal = "gp",
+        },
+        show_user_selection = {
+          normal = "gs",
+        },
       },
     },
     -- See Commands section for default commands if you want to lazy load on them
@@ -65,8 +86,8 @@ return {
         desc = "CopilotChat - Quick chat",
       },
       { "<leader>tce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>tct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
-      { "<leader>tcd", "<cmd>CopilotChatDocs<cr>",    desc = "CopilotChat - Generate docs" },
+      { "<leader>tct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      { "<leader>tcd", "<cmd>CopilotChatDocs<cr>", desc = "CopilotChat - Generate docs" },
       -- Chat with Copilot in visual mode
       {
         "<leader>tcv",
