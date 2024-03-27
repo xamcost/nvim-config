@@ -23,36 +23,50 @@ map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- Diagnostics
-map('n', '<leader>ld', vim.diagnostic.open_float, { desc = "Diagnostic popup" })
-map('n', '[d', vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
-map('n', ']d', vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-map('n', '<leader>lq', vim.diagnostic.setloclist, { desc = "List diagnostics" })
+map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnostic popup" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "List diagnostics" })
 
 -- Code navigation
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    map('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Go to declaration" })
-    map('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition" })
-    map('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf, desc = "Help" })
-    map('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf, desc = "Go to implementation" })
-    map('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Signature help" })
-    map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "Add workspace folder" })
-    map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf, desc = "Remove workspace folder" })
-    map('n', '<leader>wl', function()
+    map("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Go to declaration" })
+    map("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition" })
+    map("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Help" })
+    map("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "Go to implementation" })
+    map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Signature help" })
+    map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "Add workspace folder" })
+    map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf, desc = "Remove workspace folder" })
+    map("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, { buffer = ev.buf, desc = "List workspace folders" })
-    map('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
-    map('n', '<leader>lr', vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename all references" })
-    map({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
-    map('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
+    map("n", "<leader>D", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
+    map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename all references" })
+    map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
+    map("n", "gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
     -- map('n', '<leader>lf', function()
     --   vim.lsp.buf.format { async = true }
     -- end, opts)
   end,
 })
+
+-- Terminals
+local function lazygit_toggle()
+  require("toggleterm.terminal").Terminal
+    :new({
+      cmd = "lazygit",
+      direction = "float",
+      float_opts = {
+        border = "double",
+      },
+    })
+    :toggle()
+end
+map("n", "<leader>gg", lazygit_toggle, { desc = "ToggleTerm lazygit" })
