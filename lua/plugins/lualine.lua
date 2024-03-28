@@ -17,6 +17,23 @@ return {
     vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
     local git_blame = require("gitblame")
 
+    -- Display active lsp clients
+    local function lsp_clients()
+      local clients = vim.lsp.get_active_clients()
+      if next(clients) == nil then
+        return ''
+      end
+
+      local c = {}
+      for _, client in pairs(clients) do
+        if client.name ~= 'copilot' then
+          table.insert(c, client.name)
+        end
+      end
+      return '\u{f085}  ' .. table.concat(c, ' | ')
+    end
+
+
     require("lualine").setup({
       options = {
         theme = "auto",
@@ -26,7 +43,6 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
-
         lualine_c = {
           {
             "diagnostics",
@@ -64,6 +80,7 @@ return {
           --   cond = require("lazy.status").has_updates,
           --   color = Util.ui.fg("Special"),
           -- },
+          { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
           {
             "diff",
             symbols = {
@@ -82,13 +99,13 @@ return {
               end
             end,
           },
-          { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
         },
         lualine_y = {
-          { "progress", separator = " ", padding = { left = 1, right = 0 } },
-          { "location", padding = { left = 0, right = 1 } },
+          { lsp_clients }
         },
         lualine_z = {
+          { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
+          { "location", padding = { left = 0, right = 1 } },
           -- function()
           --   return " " .. os.date("%R")
           -- end,
