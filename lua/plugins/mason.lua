@@ -13,6 +13,7 @@ return {
       -- "astro-language-server",
       "tailwindcss-language-server",
       "lua-language-server",
+      "jedi-language-server",
       "flake8",
       "black",
       "isort",
