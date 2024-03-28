@@ -35,7 +35,7 @@ return {
     })
 
     require("lspconfig").tailwindcss.setup({})
-    require("lspconfig").astro.setup({})
-    require("lspconfig").pyright.setup({})
+    -- require("lspconfig").astro.setup({})
+    require("lspconfig").jedi_language_server.setup({})
   end,
 }
