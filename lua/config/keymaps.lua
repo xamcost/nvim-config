@@ -27,6 +27,17 @@ map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnostic popup" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "List diagnostics" })
+-- Toggle diagnostics
+local diagnostics_active = true
+local function toggle_diagnostics()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.show()
+  else
+    vim.diagnostic.hide()
+  end
+end
+vim.keymap.set('n', '<leader>lh', toggle_diagnostics, { desc = "Toggle diagnostics", noremap = true, silent = true })
 
 -- Code navigation
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -60,13 +71,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Terminals
 local function lazygit_toggle()
   require("toggleterm.terminal").Terminal
-    :new({
-      cmd = "lazygit",
-      direction = "float",
-      float_opts = {
-        border = "double",
-      },
-    })
-    :toggle()
+      :new({
+        cmd = "lazygit",
+        direction = "float",
+        float_opts = {
+          border = "double",
+        },
+      })
+      :toggle()
 end
-map("n", "<leader>gg", lazygit_toggle, { desc = "ToggleTerm lazygit" })
+map("n", "<leader>gg", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
