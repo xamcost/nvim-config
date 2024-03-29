@@ -36,7 +36,7 @@ return {
       },
       ["<leader>u"] = { name = "+ui" },
       ["<leader>w"] = { name = "+workspace" },
-      -- ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      ["<leader>x"] = { name = "+diagnostics/quickfix" },
     },
   },
   config = function(_, opts)
