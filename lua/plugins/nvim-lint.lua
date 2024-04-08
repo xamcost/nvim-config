@@ -26,8 +26,10 @@ return {
 
     lint.linters_by_ft = {
       python = { "flake8" },
-      javascript = { "eslint_d" },
-      javascriptreact = { "eslint_d" },
+      javascript = { "standardjs" },
+      javascriptreact = { "standardjs" },
+      typescript = { "ts-standard" },
+      typescriptreact = { "ts-standard" },
       dockerfile = { "hadolint" },
       yaml = { "yamllint" },
       ["yaml.ansible"] = { "ansible_lint" },

@@ -21,10 +21,12 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
       -- java = { "google-java-format" },
-      javascript = { "prettierd" },
-      javascriptreact = { { "prettierd" } },
-      typescript = { "prettierd" },
-      typescriptreact = { "prettierd" },
+      -- javascript = { "prettierd" },
+      -- javascriptreact = { { "prettierd" } },
+      javascript = { "standardjs" },
+      javascriptreact = { "standardjs" },
+      typescript = { "ts-standard" },
+      typescriptreact = { "ts-standard" },
       json = { { "prettierd" } },
       -- yaml = { "yamlfix" },
     },
@@ -34,7 +36,7 @@ return {
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
         return
       end
-      return { timeout_ms = 500, lsp_fallback = true }
+      return { timeout_ms = 1000, lsp_fallback = true }
     end,
     -- Customize formatters
     formatters = {

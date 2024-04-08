@@ -14,6 +14,7 @@ return {
       "tailwindcss-language-server",
       "lua-language-server",
       "jedi-language-server",
+      "typescript-language-server",
       "flake8",
       "black",
       "isort",
@@ -23,6 +24,9 @@ return {
       "hadolint",
       "yamllint",
       "ansible-lint",
+      "ansible-language-server",
+      "standardjs",
+      "ts-standard",
     },
     ui = {
       icons = {
