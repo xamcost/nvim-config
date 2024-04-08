@@ -7,6 +7,9 @@ vim.g.maplocalleader = " "
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
+-- set the visibility of diagnostics in the UI (0=off, 1=only show in status line, 2=virtual text off, 3=all on)
+vim.g.diagnostics_mode = 3
+
 local opt = vim.opt
 
 -- Sync with system clipboard
@@ -24,8 +27,8 @@ opt.relativenumber = true -- Relative line numbers
 
 -- Indentation
 opt.expandtab = true -- Use spaces instead of tabs
-opt.shiftwidth = 2   -- Size of an indent
-opt.tabstop = 2      -- Number of spaces tabs count for
+opt.shiftwidth = 2 -- Size of an indent
+opt.tabstop = 2 -- Number of spaces tabs count for
 
 -- Improve search
 opt.ignorecase = true

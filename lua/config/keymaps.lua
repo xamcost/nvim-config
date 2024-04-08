@@ -22,6 +22,11 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window w
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
+-- New file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+-- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+-- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
 -- Diagnostics
 map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnostic popup" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
@@ -37,7 +42,7 @@ local function toggle_diagnostics()
     vim.diagnostic.hide()
   end
 end
-vim.keymap.set('n', '<leader>lh', toggle_diagnostics, { desc = "Toggle diagnostics", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>lh", toggle_diagnostics, { desc = "Toggle diagnostics", noremap = true, silent = true })
 
 -- Code navigation
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -71,13 +76,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Terminals
 local function lazygit_toggle()
   require("toggleterm.terminal").Terminal
-      :new({
-        cmd = "lazygit",
-        direction = "float",
-        float_opts = {
-          border = "double",
-        },
-      })
-      :toggle()
+    :new({
+      cmd = "lazygit",
+      direction = "float",
+      float_opts = {
+        border = "double",
+      },
+    })
+    :toggle()
 end
 map("n", "<leader>gg", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
+map("n", "<leader>tl", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
+
+-- Trouble
+map("n", "<leader>xx", function()
+  require("trouble").toggle()
+end, { desc = "Trouble toogle" })
+map("n", "<leader>xw", function()
+  require("trouble").toggle("workspace_diagnostics")
+end, { desc = "Trouble workspace diagnostics" })
+map("n", "<leader>xd", function()
+  require("trouble").toggle("document_diagnostics")
+end, { desc = "Trouble document diagnostics" })
+map("n", "<leader>xq", function()
+  require("trouble").toggle("quickfix")
+end, { desc = "Trouble quickfix" })
+map("n", "<leader>xl", function()
+  require("trouble").toggle("loclist")
+end, { desc = "Trouble loclist" })
+map("n", "gR", function()
+  require("trouble").toggle("lsp_references")
+end, { desc = "Trouble lsp references" })
