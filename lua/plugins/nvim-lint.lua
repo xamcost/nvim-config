@@ -24,12 +24,44 @@ return {
       function() return vim.api.nvim_buf_get_name(0) end,
     }
 
+    local pattern = [[([^:]+):(\d+):(\d+): (.*)]]
+    -- local pattern = "[^:]+:(%d+):(%d+):([^%.]+%.?)%s%(([%a-]+)%)%s?%(?(%a*)%)?"
+    local groups = { 'lnum', 'col', 'message', 'code', 'severity' }
+    -- local groups = { 'file', 'line', 'start_col', 'message' },
+    local severities = {
+      [''] = vim.diagnostic.severity.ERROR,
+      ['warning'] = vim.diagnostic.severity.WARN
+    }
+
+    lint.linters.tsstandard = {
+      name = 'ts-standard',
+      cmd = 'ts-standard',
+      stdin = true,
+      args = { "--stdin" },
+      ignore_exitcode = true,
+      parser = require('lint.parser').from_pattern(
+        pattern,
+        -- { 'file', 'line', 'start_col', 'message' },
+        groups,
+        severities,
+        { ['source'] = 'ts-standard' },
+        {}
+      )
+      -- parser = require('lint.parser').from_pattern(
+      --   pattern,
+      --   groups,
+      --   severities,
+      --   { ['source'] = 'ts-standard' },
+      --   {}
+      -- )
+    }
+
     lint.linters_by_ft = {
       python = { "flake8" },
       javascript = { "standardjs" },
       javascriptreact = { "standardjs" },
-      typescript = { "ts-standard" },
-      typescriptreact = { "ts-standard" },
+      typescript = { "tsstandard" },
+      typescriptreact = { "tsstandard" },
       dockerfile = { "hadolint" },
       yaml = { "yamllint" },
       ["yaml.ansible"] = { "ansible_lint" },
