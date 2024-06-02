@@ -19,25 +19,25 @@ return {
     -- { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     -- { "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
     -- find
-    { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+    { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",                              desc = "Buffers" },
     -- { "<leader>fc", Util.telescope.config_files(), desc = "Find Config File" },
-    { "<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Find Files" },
+    { "<leader>ff", function() require("telescope.builtin").find_files() end,                                   desc = "Find Files" },
     { "<leader>fF", function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end, desc = "Find All Files" },
-    { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+    { "<leader>fg", "<cmd>Telescope git_files<cr>",                                                             desc = "Find Files (git-files)" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                                              desc = "Recent" },
     -- { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
     -- git
-    { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-    { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+    { "<leader>gc", "<cmd>Telescope git_commits<CR>",                                                           desc = "commits" },
+    { "<leader>gs", "<cmd>Telescope git_status<CR>",                                                            desc = "status" },
     -- search
-    { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
-    { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-    { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-    { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-    { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
-    { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-    { "<leader>fw", function() require("telescope.builtin").live_grep() end, desc = "Live Grep" },
+    { '<leader>s"', "<cmd>Telescope registers<cr>",                                                             desc = "Registers" },
+    { "<leader>sa", "<cmd>Telescope autocommands<cr>",                                                          desc = "Auto Commands" },
+    { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>",                                             desc = "Buffer" },
+    { "<leader>sc", "<cmd>Telescope command_history<cr>",                                                       desc = "Command History" },
+    { "<leader>sC", "<cmd>Telescope commands<cr>",                                                              desc = "Commands" },
+    { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>",                                                   desc = "Document diagnostics" },
+    { "<leader>sD", "<cmd>Telescope diagnostics<cr>",                                                           desc = "Workspace diagnostics" },
+    { "<leader>fw", function() require("telescope.builtin").live_grep() end,                                    desc = "Live Grep" },
     {
       "<leader>fW",
       function()
@@ -47,13 +47,13 @@ return {
       end,
       desc = "Live Grep (all)"
     },
-    { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-    { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-    { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-    { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-    { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+    { "<leader>sh", "<cmd>Telescope help_tags<cr>",   desc = "Help Pages" },
+    { "<leader>sH", "<cmd>Telescope highlights<cr>",  desc = "Search Highlight Groups" },
+    { "<leader>sk", "<cmd>Telescope keymaps<cr>",     desc = "Key Maps" },
+    { "<leader>sM", "<cmd>Telescope man_pages<cr>",   desc = "Man Pages" },
+    { "<leader>sm", "<cmd>Telescope marks<cr>",       desc = "Jump to Mark" },
     { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-    { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+    { "<leader>sR", "<cmd>Telescope resume<cr>",      desc = "Resume" },
     -- { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
     -- { "<leader>sW", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
     -- { "<leader>sw", Util.telescope("grep_string"), mode = "v", desc = "Selection (root dir)" },
@@ -81,12 +81,7 @@ return {
   opts = function()
     local actions = require("telescope.actions")
 
-    local open_with_trouble = function(...)
-      return require("trouble.providers.telescope").open_with_trouble(...)
-    end
-    local open_selected_with_trouble = function(...)
-      return require("trouble.providers.telescope").open_selected_with_trouble(...)
-    end
+    local open_with_trouble = require("trouble.sources.telescope").open
     -- local find_files_no_ignore = function()
     --   local action_state = require("telescope.actions.state")
     --   local line = action_state.get_current_line()
@@ -118,15 +113,15 @@ return {
         mappings = {
           i = {
             ["<c-t>"] = open_with_trouble,
-            ["<a-t>"] = open_selected_with_trouble,
-            ["<a-i>"] = find_files_no_ignore,
-            ["<a-h>"] = find_files_with_hidden,
+            -- ["<a-i>"] = find_files_no_ignore,
+            -- ["<a-h>"] = find_files_with_hidden,
             ["<C-Down>"] = actions.cycle_history_next,
             ["<C-Up>"] = actions.cycle_history_prev,
             ["<C-f>"] = actions.preview_scrolling_down,
             ["<C-b>"] = actions.preview_scrolling_up,
           },
           n = {
+            ["<c-t>"] = open_with_trouble,
             ["q"] = actions.close,
           },
         },
