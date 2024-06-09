@@ -20,6 +20,7 @@ return {
       -- astro = { { "prettier", "prettierd" } },
       lua = { "stylua" },
       python = { "isort", "black" },
+      rust = { "rustfmt" },
       -- java = { "google-java-format" },
       -- javascript = { "prettierd" },
       -- javascriptreact = { { "prettierd" } },
@@ -44,7 +45,7 @@ return {
       --   prepend_args = { "-i", "2" },
       -- },
       prettierd = {
-        args = { "--no-semi", "--stdin-filepath", "$FILENAME" }
+        args = { "--no-semi", "--stdin-filepath", "$FILENAME" },
       },
       -- prettier = {
       --   args = function(ctx)

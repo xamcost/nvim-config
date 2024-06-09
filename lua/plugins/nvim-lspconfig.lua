@@ -3,8 +3,8 @@ return {
   lazy = true,
   event = { "BufReadPost", "BufWritePost", "BufNewFile" },
   dependencies = {
-    { "folke/neoconf.nvim", cmd = "Neoconf",                                config = true },
-    { "folke/neodev.nvim",  opts = { experimental = { pathStrict = true } } },
+    { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+    { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     "mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
@@ -36,6 +36,7 @@ return {
 
     require("lspconfig").tailwindcss.setup({})
     require("lspconfig").tsserver.setup({})
+    require("lspconfig").rust_analyzer.setup({})
     -- require("lspconfig").astro.setup({})
     require("lspconfig").jedi_language_server.setup({})
   end,

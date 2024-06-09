@@ -27,6 +27,7 @@ return {
       "ansible-language-server",
       "standardjs",
       "ts-standard",
+      "rust-analyzer",
     },
     ui = {
       icons = {
