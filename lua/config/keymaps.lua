@@ -22,6 +22,9 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window w
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
+-- save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
 -- New file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 -- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
@@ -76,14 +79,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Terminals
 local function lazygit_toggle()
   require("toggleterm.terminal").Terminal
-      :new({
-        cmd = "lazygit",
-        direction = "float",
-        float_opts = {
-          border = "double",
-        },
-      })
-      :toggle()
+    :new({
+      cmd = "lazygit",
+      direction = "float",
+      float_opts = {
+        border = "double",
+      },
+    })
+    :toggle()
 end
 map("n", "<leader>gg", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
 map("n", "<leader>tl", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
