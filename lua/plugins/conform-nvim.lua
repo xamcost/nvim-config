@@ -21,9 +21,7 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
       rust = { "rustfmt" },
-      -- java = { "google-java-format" },
-      -- javascript = { "prettierd" },
-      -- javascriptreact = { { "prettierd" } },
+      java = { "google-java-format" },
       javascript = { "standardjs" },
       javascriptreact = { "standardjs" },
       typescript = { "ts-standard" },
@@ -41,9 +39,6 @@ return {
     end,
     -- Customize formatters
     formatters = {
-      -- shfmt = {
-      --   prepend_args = { "-i", "2" },
-      -- },
       prettierd = {
         args = { "--no-semi", "--stdin-filepath", "$FILENAME" },
       },

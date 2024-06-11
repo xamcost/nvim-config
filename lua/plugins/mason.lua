@@ -28,6 +28,9 @@ return {
       "standardjs",
       "ts-standard",
       "rust-analyzer",
+      "jdtls",
+      "google-java-format",
+      "checkstyle",
     },
     ui = {
       icons = {

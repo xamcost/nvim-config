@@ -47,17 +47,11 @@ return {
         { ['source'] = 'ts-standard' },
         {}
       )
-      -- parser = require('lint.parser').from_pattern(
-      --   pattern,
-      --   groups,
-      --   severities,
-      --   { ['source'] = 'ts-standard' },
-      --   {}
-      -- )
     }
 
     lint.linters_by_ft = {
       python = { "flake8" },
+      java = { "checkstyle" },
       javascript = { "standardjs" },
       javascriptreact = { "standardjs" },
       typescript = { "tsstandard" },

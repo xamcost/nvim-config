@@ -39,5 +39,6 @@ return {
     require("lspconfig").rust_analyzer.setup({})
     -- require("lspconfig").astro.setup({})
     require("lspconfig").jedi_language_server.setup({})
+    require("lspconfig").jdtls.setup({})
   end,
 }
