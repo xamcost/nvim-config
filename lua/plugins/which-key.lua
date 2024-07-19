@@ -5,43 +5,28 @@ return {
   event = "VeryLazy",
   opts = {
     plugins = { spelling = true },
-    defaults = {
+    spec = {
       mode = { "n", "v" },
-      ["g"] = { name = "+goto" },
-      ["gs"] = { name = "+surround" },
-      ["z"] = { name = "+fold" },
-      ["]"] = { name = "+next" },
-      ["["] = { name = "+prev" },
-      -- ["<leader><tab>"] = { name = "+tabs" },
-      ["<leader>b"] = { name = "+buffer" },
-      -- ["<leader>c"] = { name = "+code" },
-      ["<leader>f"] = { name = "+file/find" },
-      ["<leader>g"] = {
-        name = "+git",
-        h = { desc = "+hunks" },
-      },
-      ["<leader>l"] = {
-        name = "+lsp",
-        s = { desc = "+swap" },
-      },
-      ["<leader>q"] = { name = "+quit/session" },
-      ["<leader>s"] = {
-        name = "+search",
-        n = { desc = "+noice" },
-      },
-      ["<leader>S"] = { name = "+sessions" },
-      ["<leader>t"] = {
-        name = "+terminal",
-        c = { desc = "+copilot chat" },
-      },
-      ["<leader>u"] = { name = "+ui" },
-      ["<leader>w"] = { name = "+workspace" },
-      ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      { "<leader>S",  group = "sessions" },
+      { "<leader>b",  group = "buffer" },
+      { "<leader>f",  group = "file/find" },
+      { "<leader>g",  group = "git" },
+      { "<leader>gh", desc = "+hunks" },
+      { "<leader>l",  group = "lsp" },
+      { "<leader>ls", desc = "+swap" },
+      { "<leader>q",  group = "quit/session" },
+      { "<leader>s",  group = "search" },
+      { "<leader>sn", desc = "+noice" },
+      { "<leader>t",  group = "terminal" },
+      { "<leader>tc", desc = "+copilot chat" },
+      { "<leader>u",  group = "ui" },
+      { "<leader>w",  group = "workspace" },
+      { "<leader>x",  group = "diagnostics/quickfix" },
+      { "[",          group = "prev" },
+      { "]",          group = "next" },
+      { "g",          group = "goto" },
+      { "gs",         group = "surround" },
+      { "z",          group = "fold" },
     },
   },
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-    wk.register(opts.defaults)
-  end,
 }
