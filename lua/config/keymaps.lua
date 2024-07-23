@@ -75,18 +75,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- end, opts)
   end,
 })
-
--- Terminals
-local function lazygit_toggle()
-  require("toggleterm.terminal").Terminal
-    :new({
-      cmd = "lazygit",
-      direction = "float",
-      float_opts = {
-        border = "double",
-      },
-    })
-    :toggle()
-end
-map("n", "<leader>gg", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
-map("n", "<leader>tl", lazygit_toggle, { desc = "ToggleTerm lazygit", noremap = true, silent = true })
