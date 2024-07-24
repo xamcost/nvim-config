@@ -30,6 +30,9 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 -- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 -- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
+-- Oil file explorer
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- Diagnostics
 map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnostic popup" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
@@ -66,7 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, { buffer = ev.buf, desc = "List workspace folders" })
-    map("n", "<leader>D", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
+    map("n", "gT", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
     map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename all references" })
     map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
     map("n", "gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
