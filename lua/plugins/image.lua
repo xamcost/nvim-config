@@ -14,6 +14,7 @@ return {
   },
   config = function()
     require("image").setup({
+      -- backend = "ueberzug",
       backend = "kitty",
       integrations = {
         markdown = {
@@ -39,6 +40,7 @@ return {
       },
       max_width = nil,
       max_height = nil,
+      kitty_method = "normal",
       max_width_window_percentage = nil,
       max_height_window_percentage = 50,
       window_overlap_clear_enabled = false,                                               -- toggles images when windows are overlapped
