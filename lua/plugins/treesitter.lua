@@ -6,7 +6,7 @@ return {
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {
       { "<c-space>", desc = "Increment selection" },
-      { "<bs>", desc = "Decrement selection", mode = "x" },
+      { "<bs>",      desc = "Decrement selection", mode = "x" },
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -35,12 +35,15 @@ return {
           "regex",
           "rust",
           "toml",
-          "tsx",
+          -- "tsx",
           "typescript",
           "vim",
           "xml",
           "yaml",
         },
+        sync_install = false,
+        auto_install = true,
+        ignore_install = {},
         incremental_selection = {
           enable = true,
           keymaps = {
@@ -113,11 +116,11 @@ return {
             enable = true,
             swap_next = {
               ["<leader>lsp"] = "@parameter.inner", -- swap parameters/argument with next
-              ["<leader>lsm"] = "@function.outer", -- swap function with next
+              ["<leader>lsm"] = "@function.outer",  -- swap function with next
             },
             swap_previous = {
               ["<leader>lsP"] = "@parameter.inner", -- swap parameters/argument with prev
-              ["<leader>lsM"] = "@function.outer", -- swap function with previous
+              ["<leader>lsM"] = "@function.outer",  -- swap function with previous
             },
           },
         },
