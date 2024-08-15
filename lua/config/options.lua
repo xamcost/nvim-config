@@ -27,8 +27,8 @@ opt.relativenumber = true -- Relative line numbers
 
 -- Indentation
 opt.expandtab = true -- Use spaces instead of tabs
-opt.shiftwidth = 2 -- Size of an indent
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.shiftwidth = 2   -- Size of an indent
+opt.tabstop = 2      -- Number of spaces tabs count for
 
 -- Improve search
 opt.ignorecase = true
@@ -41,3 +41,6 @@ opt.undolevels = 10000
 
 -- Open vertical windows on the right
 opt.splitright = true
+
+-- Mostly for Obsidian UI features
+opt.conceallevel = 1
