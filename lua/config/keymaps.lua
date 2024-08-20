@@ -78,3 +78,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- end, opts)
   end,
 })
+
+-- Markdown
+local query = vim.treesitter.query.parse('markdown', '((atx_heading) @header)')
+vim.keymap.set('n', ']h', function()
+  local root = vim.treesitter.get_parser():parse()[1]:root()
+  local _, node, _ = query:iter_captures(root, 0, vim.fn.line '.', -1)()
+  if not node then return end
+  require 'nvim-treesitter.ts_utils'.goto_node(node)
+end, { desc = "Next heading" })
+vim.keymap.set('n', '[h', function()
+  local root = vim.treesitter.get_parser():parse()[1]:root()
+  if vim.fn.line '.' == 1 then return end
+  local node
+  for _, n, _ in query:iter_captures(root, 0, 0, vim.fn.line '.' - 1) do
+    node = n
+  end
+  if not node then return end
+  require 'nvim-treesitter.ts_utils'.goto_node(node)
+end, { desc = "Previous heading" })
