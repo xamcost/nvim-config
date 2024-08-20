@@ -80,6 +80,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Markdown
+-- Preview document
+map("n", "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", { desc = "Toggle Preview" })
+-- Navigate through headings
 local query = vim.treesitter.query.parse('markdown', '((atx_heading) @header)')
 vim.keymap.set('n', ']h', function()
   local root = vim.treesitter.get_parser():parse()[1]:root()
