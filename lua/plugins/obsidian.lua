@@ -25,8 +25,18 @@ return {
         path = "~/Nextcloud/Obsidian/asphodel",
       },
     },
+
     new_notes_location = "current_dir",
     preferred_link_style = "markdown",
+
+    -- Optional, customize how note file names are generated given the ID, target directory, and title.
+    ---@param spec { id: string, dir: obsidian.Path, title: string|? }
+    ---@return string|obsidian.Path The full path to the new note.
+    note_path_func = function(spec)
+      local path = spec.dir / tostring(spec.title)
+      return path:with_suffix(".md")
+    end,
+
     attachments = {
       img_folder = "_resources",
     },
@@ -36,7 +46,7 @@ return {
         action = function()
           return require("obsidian").util.gf_passthrough()
         end,
-        opts = { noremap = false, expr = true, buffer = true },
+        opts = { noremap = false, expr = true, buffer = true, desc = "Follow link" },
       },
       -- Toggle check-boxes.
       ["<leader>oc"] = {
@@ -55,7 +65,7 @@ return {
       -- Search notes using Telescope.
       ["<leader>fo"] = {
         action = "<cmd>ObsidianQuickSwitch<cr>",
-        opts = { buffer = true, desc = "Find Obsidian" },
+        opts = { buffer = true, desc = "Find in Obsidian" },
       },
       -- Paste image
       ["<leader>op"] = {
