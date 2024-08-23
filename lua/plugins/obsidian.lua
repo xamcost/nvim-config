@@ -67,6 +67,11 @@ return {
         action = "<cmd>ObsidianQuickSwitch<cr>",
         opts = { buffer = true, desc = "Find in Obsidian" },
       },
+      -- List all tags in Telescope
+      ["<leader>ot"] = {
+        action = "<cmd>ObsidianTags<cr>",
+        opts = { noremap = false, desc = "List tags" },
+      },
       -- Paste image
       ["<leader>op"] = {
         action = "<cmd>ObsidianPasteImg<cr>",
