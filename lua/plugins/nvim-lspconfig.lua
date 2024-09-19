@@ -35,10 +35,10 @@ return {
     })
 
     require("lspconfig").tailwindcss.setup({})
-    require("lspconfig").ts_ls.setup({})
+    require("lspconfig").ts_ls.setup({}) -- TypeScript
     require("lspconfig").rust_analyzer.setup({})
     -- require("lspconfig").astro.setup({})
-    require("lspconfig").jedi_language_server.setup({})
-    require("lspconfig").jdtls.setup({})
+    require("lspconfig").jedi_language_server.setup({}) -- Python
+    require("lspconfig").jdtls.setup({})                -- Java
   end,
 }
