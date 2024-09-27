@@ -72,7 +72,7 @@ return {
         action = "<cmd>ObsidianTags<cr>",
         opts = { noremap = false, desc = "List tags" },
       },
-      -- Paste image
+      -- Paste image: not working yet...
       ["<leader>op"] = {
         action = "<cmd>ObsidianPasteImg<cr>",
         opts = { buffer = true, desc = "Paste Image" },

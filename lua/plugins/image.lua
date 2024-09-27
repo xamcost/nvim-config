@@ -23,6 +23,15 @@ return {
           download_remote_images = true,
           only_render_image_at_cursor = true,
           filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+          resolve_image_path = function(document_path, image_path, fallback)
+            local working_dir = vim.fn.getcwd()
+            -- Format image path for Obsidian notes
+            if (working_dir:find("Obsidian/asphodel") and not image_path:find("../", 1, true)) then
+              return working_dir .. "/" .. image_path
+            end
+            -- Fallback to the default behavior
+            return fallback(document_path, image_path)
+          end,
         },
         neorg = {
           enabled = false,
