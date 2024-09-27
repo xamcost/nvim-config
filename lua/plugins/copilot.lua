@@ -32,10 +32,11 @@ return {
     branch = "canary",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
     },
+    build = "make tiktoken",
     opts = {
-      debug = true, -- Enable debugging
+      debug = true,          -- Enable debugging
       window = {
         layout = "vertical", -- 'vertical', 'horizontal', 'float'
       },
@@ -85,9 +86,10 @@ return {
         end,
         desc = "CopilotChat - Quick chat",
       },
+      { "<leader>tco", "<cmd>CopilotChatToggle<cr>",  desc = "CopilotChat - Toggle" },
       { "<leader>tce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>tct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
-      { "<leader>tcd", "<cmd>CopilotChatDocs<cr>", desc = "CopilotChat - Generate docs" },
+      { "<leader>tct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
+      { "<leader>tcd", "<cmd>CopilotChatDocs<cr>",    desc = "CopilotChat - Generate docs" },
       -- Chat with Copilot in visual mode
       {
         "<leader>tcv",
