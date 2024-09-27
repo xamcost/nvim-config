@@ -79,6 +79,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- Octo autocomplete for issues and users
+map("i", "@", "@<C-x><C-o>", { silent = true, buffer = true })
+map("i", "#", "#<C-x><C-o>", { silent = true, buffer = true })
+
 -- Markdown
 -- Preview document
 map("n", "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", { desc = "Toggle Preview" })
