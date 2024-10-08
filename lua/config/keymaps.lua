@@ -30,6 +30,14 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 -- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 -- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
+-- Mac like accent keys
+map("i", "<M-e>", "<C-k>'", { silent = true })
+map("i", "<M-`>", "<C-k>`", { silent = true })
+map("i", "<M-i>", "<C-k>^", { silent = true })
+map("i", "<M-u>", "<C-k>:", { silent = true })
+map("i", "<M-c>", "<C-k>,c", { silent = true })
+map("i", "<M-S-c>", "<C-k>,C", { silent = true })
+
 -- Oil file explorer
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
