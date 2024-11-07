@@ -96,13 +96,13 @@ map("i", "#", "#<C-x><C-o>", { silent = true, buffer = true })
 map("n", "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", { desc = "Toggle Preview" })
 -- Navigate through headings
 local query = vim.treesitter.query.parse('markdown', '((atx_heading) @header)')
-vim.keymap.set('n', ']h', function()
+vim.keymap.set('n', 'gh', function()
   local root = vim.treesitter.get_parser():parse()[1]:root()
   local _, node, _ = query:iter_captures(root, 0, vim.fn.line '.', -1)()
   if not node then return end
   require 'nvim-treesitter.ts_utils'.goto_node(node)
 end, { desc = "Next heading" })
-vim.keymap.set('n', '[h', function()
+vim.keymap.set('n', 'gH', function()
   local root = vim.treesitter.get_parser():parse()[1]:root()
   if vim.fn.line '.' == 1 then return end
   local node
