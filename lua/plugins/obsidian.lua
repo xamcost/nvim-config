@@ -9,8 +9,10 @@ return {
     -- refer to `:h file-pattern` for more examples
     -- "BufReadPre path/to/my-vault/*.md",
     -- "BufNewFile path/to/my-vault/*.md",
-    "BufReadPre " .. vim.fn.expand "~" .. "/Nextcloud/Obsidian/asphodel/*.md",
-    "BufNewFile " .. vim.fn.expand "~" .. "/Nextcloud/Obsidian/asphodel/*.md",
+    "BufReadPre "
+      .. vim.fn.expand("~")
+      .. "/Nextcloud/Obsidian/asphodel/*.md",
+    "BufNewFile " .. vim.fn.expand("~") .. "/Nextcloud/Obsidian/asphodel/*.md",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -24,6 +26,14 @@ return {
         name = "asphodel",
         path = "~/Nextcloud/Obsidian/asphodel",
       },
+    },
+
+    templates = {
+      folder = "Templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+      -- A map for custom variables, the key should be the variable and the value a function
+      substitutions = {},
     },
 
     new_notes_location = "current_dir",
