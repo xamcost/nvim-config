@@ -12,5 +12,12 @@ return {
       end,
       desc = "Toggle Lazygit",
     },
+    {
+      "<leader>bd",
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = "Delete Buffer",
+    },
   },
 }
