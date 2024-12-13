@@ -14,9 +14,6 @@ return {
   config = function()
     vim.o.laststatus = vim.g.lualine_laststatus
 
-    vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-    local git_blame = require("gitblame")
-
     -- Display active lsp clients
     local function lsp_clients()
       local clients = vim.lsp.get_active_clients()
@@ -80,7 +77,6 @@ return {
           --   cond = require("lazy.status").has_updates,
           --   color = Util.ui.fg("Special"),
           -- },
-          { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
           {
             "diff",
             symbols = {

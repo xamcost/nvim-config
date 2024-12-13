@@ -15,6 +15,7 @@ return {
     },
     scroll = { enabled = true },
     words = { enabled = true },
+    statuscolumn = { enabled = true },
     styles = {
       notification = {
         wo = { wrap = true } -- Wrap notifications
@@ -22,34 +23,16 @@ return {
     },
   },
   keys = {
-    {
-      "<leader>gg",
-      function()
-        Snacks.lazygit()
-      end,
-      desc = "Toggle Lazygit",
-    },
-    {
-      "<leader>bd",
-      function()
-        Snacks.bufdelete()
-      end,
-      desc = "Delete Buffer",
-    },
-    {
-      "<leader>uH",
-      function()
-        Snacks.notifier.show_history()
-      end,
-      desc = "Notification History",
-    },
-    {
-      "<leader>un",
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = "Dismiss All Notifications",
-    },
+    { "<leader>gB", function() Snacks.gitbrowse() end,               desc = "Git Browse" },
+    { "<leader>gb", function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
+    { "<leader>gf", function() Snacks.lazygit.log_file() end,        desc = "Lazygit Current File History" },
+    { "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
+    { "<leader>gl", function() Snacks.lazygit.log() end,             desc = "Lazygit Log (cwd)" },
+    { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
+    { "<leader>uH", function() Snacks.notifier.show_history() end,   desc = "Notification History" },
+    { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
+    { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",              mode = { "n", "t" } },
+    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",              mode = { "n", "t" } },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
