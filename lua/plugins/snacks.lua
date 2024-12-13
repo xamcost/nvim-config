@@ -3,6 +3,7 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    indent = { enable = true },
   },
   keys = {
     {
