@@ -1,21 +1,11 @@
 return {
   '3rd/image.nvim',
-  dependencies = {
-    'leafo/magick',
-    "nvim-treesitter/nvim-treesitter",
-    {
-      "vhyrro/luarocks.nvim",
-      opts = {
-        rocks = {
-          hererocks = true,
-        },
-      },
-    },
-  },
+  build = false,
   config = function()
     require("image").setup({
       -- backend = "ueberzug",
       backend = "kitty",
+      processor = "magick_cli",
       integrations = {
         markdown = {
           enabled = true,
