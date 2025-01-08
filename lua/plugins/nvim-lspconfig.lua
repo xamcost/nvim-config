@@ -40,5 +40,6 @@ return {
     -- require("lspconfig").astro.setup({})
     require("lspconfig").jedi_language_server.setup({}) -- Python
     require("lspconfig").jdtls.setup({})                -- Java
+    require("lspconfig").terraformls.setup({})          -- Terraform
   end,
 }

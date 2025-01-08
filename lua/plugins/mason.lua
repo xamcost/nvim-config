@@ -18,8 +18,6 @@ return {
       "flake8",
       "black",
       "isort",
-      "eslint_d",
-      "prettier",
       "prettierd",
       "hadolint",
       "yamllint",
@@ -31,6 +29,8 @@ return {
       "jdtls",
       "google-java-format",
       "checkstyle",
+      "terraform-ls",
+      "tflint",
     },
     ui = {
       icons = {
