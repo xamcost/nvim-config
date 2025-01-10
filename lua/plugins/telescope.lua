@@ -54,10 +54,33 @@ return {
         end,
         desc = "Live Grep (all)"
       },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>",   desc = "Help Pages" },
-      { "<leader>sH", "<cmd>Telescope highlights<cr>",  desc = "Search Highlight Groups" },
-      { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-      { "<leader>sR", "<cmd>Telescope resume<cr>",      desc = "Resume" },
+      { "<leader>sh", "<cmd>Telescope help_tags<cr>",                                                             desc = "Help Pages" },
+      { "<leader>sH", "<cmd>Telescope highlights<cr>",                                                            desc = "Search Highlight Groups" },
+      { "<leader>so", "<cmd>Telescope vim_options<cr>",                                                           desc = "Options" },
+      { "<leader>sR", "<cmd>Telescope resume<cr>",                                                                desc = "Resume" },
+      { "<leader>sw", function() require("telescope.builtin").grep_string { word_match = "-w" } end,              desc = "Word (root dir)" },
+      { "<leader>sW", function() require("telescope.builtin").grep_string { cwd = false, word_match = "-w" } end, desc = "Word (cwd)" },
+      { "<leader>ss", function() require("telescope.builtin").grep_string() end,                                  mode = "v",                       desc = "Selection (root dir)" },
+      { "<leader>sS", function() require("telescope.builtin").grep_string { cwd = false } end,                    mode = "v",                       desc = "Selection (cwd)" },
+      { "<leader>uC", function() require("telescope.builtin").colorscheme { enable_preview = true } end,          desc = "Colorscheme with preview" },
+      {
+        "<leader>sL",
+        function()
+          require("telescope.builtin").lsp_document_symbols {
+            symbols = require("lazyvim.config").get_kind_filter(),
+          }
+        end,
+        desc = "Goto Symbol",
+      },
+      {
+        "<leader>sl",
+        function()
+          require("telescope.builtin").lsp_dynamic_workspace_symbols {
+            symbols = require("lazyvim.config").get_kind_filter(),
+          }
+        end,
+        desc = "Goto Symbol (Workspace)",
+      },
       -- { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
       -- { "<leader>sW", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
       -- { "<leader>sw", Util.telescope("grep_string"), mode = "v", desc = "Selection (root dir)" },
