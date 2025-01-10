@@ -39,7 +39,31 @@ return {
     require("lspconfig").rust_analyzer.setup({})
     -- require("lspconfig").astro.setup({})
     require("lspconfig").jedi_language_server.setup({}) -- Python
-    require("lspconfig").jdtls.setup({})                -- Java
+    -- require("lspconfig").jdtls.setup({})                -- Java
     require("lspconfig").terraformls.setup({})          -- Terraform
+    require("lspconfig").nixd.setup({
+      cmd = { "nixd" },
+      settings = {
+        -- More info: https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md#configuration-overview
+        nixd = {
+          nixpkgs = {
+            expr = "import <nixpkgs> { }",
+            -- expr = 'import (builtins.getFlake ("github:xamcost/nixos-config").inputs.nixpkgs)',
+          },
+          formatting = {
+            command = { "nixpkgs-fmt" },
+          },
+          options = {
+            -- nixos = {
+            --   expr = '(builtins.getFlake ("github:xamcost/nixos-config")).nixosConfigurations.elysium.options',
+            -- },
+            home_manager = {
+              expr =
+              '(builtins.getFlake ("github:xamcost/nixos-config")).homeConfigurations."mcostalonga@xam-mac-work".options',
+            },
+          },
+        },
+      },
+    })
   end,
 }
