@@ -11,8 +11,8 @@ return {
     -- "BufNewFile path/to/my-vault/*.md",
     "BufReadPre "
       .. vim.fn.expand("~")
-      .. "/Nextcloud/Obsidian/asphodel/*.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/Nextcloud/Obsidian/asphodel/*.md",
+      .. "/Documents/Obsidian/asphodel/*.md",
+    "BufNewFile " .. vim.fn.expand("~") .. "/Documents/Obsidian/asphodel/*.md",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -24,7 +24,7 @@ return {
     workspaces = {
       {
         name = "asphodel",
-        path = "~/Nextcloud/Obsidian/asphodel",
+        path = "~/Documents/Obsidian/asphodel",
       },
     },
 
