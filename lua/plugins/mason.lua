@@ -15,6 +15,7 @@ return {
       "lua-language-server",
       "jedi-language-server",
       "typescript-language-server",
+      "yaml-language-server",
       "flake8",
       "black",
       "isort",
@@ -31,6 +32,7 @@ return {
       "checkstyle",
       "terraform-ls",
       "tflint",
+      "helm-ls"
     },
     ui = {
       icons = {

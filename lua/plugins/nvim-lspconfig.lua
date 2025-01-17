@@ -8,6 +8,7 @@ return {
     "mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
+    { "towolf/vim-helm", ft = "helm" }, -- To detect Helm files and prevent yamlls from being used
   },
   config = function()
     require("lspconfig").lua_ls.setup({
@@ -64,6 +65,16 @@ return {
           },
         },
       },
+    })
+    require("lspconfig").yamlls.setup({})
+    require("lspconfig").helm_ls.setup({
+      settings = {
+        ['helm-ls'] = {
+          yamlls = {
+            path = "yaml-language-server",
+          }
+        }
+      }
     })
   end,
 }
