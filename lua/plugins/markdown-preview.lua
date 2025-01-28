@@ -2,7 +2,15 @@ return {
   "iamcco/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   -- ft = { "markdown" },
-  build = function() vim.fn["mkdp#util#install"]() end,
+  -- build = ":call mkdp#util#install()",
+  build = function(plugin)
+    if vim.fn.executable "npx" then
+      vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")
+    else
+      vim.cmd [[Lazy load markdown-preview.nvim]]
+      vim.fn["mkdp#util#install"]()
+    end
+  end,
   init = function()
     vim.g.mkdp_command_for_global = 1 -- enable preview of all files, not only .md
 
