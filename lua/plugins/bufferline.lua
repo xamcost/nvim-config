@@ -4,16 +4,15 @@ return {
   keys = {
     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-    { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>",          desc = "Delete other buffers" },
     { "<leader>br", "<Cmd>BufferLineCloseRight<CR>",           desc = "Delete buffers to the right" },
     { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>",            desc = "Delete buffers to the left" },
   },
   opts = {
     options = {
       -- stylua: ignore
-      close_command = function(n) require("snacks").bufdelete(n, false) end,
+      close_command = function(n) require("snacks").bufdelete.delete(n) end,
       -- stylua: ignore
-      right_mouse_command = function(n) require("snacks").bufdelete(n, false) end,
+      right_mouse_command = function(n) require("snacks").bufdelete.delete(n) end,
       diagnostics = "nvim_lsp",
       always_show_bufferline = false,
       diagnostics_indicator = function(_, _, diag)
