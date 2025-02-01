@@ -5,6 +5,7 @@ return {
   event = "VeryLazy",
   opts = {
     plugins = { spelling = true },
+    preset = "modern", -- classic, modern, helix
     spec = {
       mode = { "n", "v" },
       { "<leader>S",  group = "sessions" },
