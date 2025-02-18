@@ -10,7 +10,7 @@ return {
   build = ":MasonUpdate",
   opts = {
     ensure_installed = {
-      -- "astro-language-server",
+      "astro-language-server",
       "tailwindcss-language-server",
       "lua-language-server",
       "jedi-language-server",

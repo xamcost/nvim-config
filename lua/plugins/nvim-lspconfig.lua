@@ -35,6 +35,7 @@ return {
       },
     })
 
+    require("lspconfig").astro.setup({})
     require("lspconfig").tailwindcss.setup({})
     require("lspconfig").ts_ls.setup({}) -- TypeScript
     require("lspconfig").rust_analyzer.setup({})
